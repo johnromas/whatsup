@@ -6,4 +6,6 @@ class User < ActiveRecord::Base
 
 	has_many :attendences
 	has_many :events, through: :attendences
+	has_many :friendships
+	has_many :friends, through: :friendships
 end

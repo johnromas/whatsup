@@ -8,4 +8,8 @@ class User < ActiveRecord::Base
 	has_many :events, through: :attendences
 	has_many :friendships
 	has_many :friends, through: :friendships
+
+	def attending(event)
+		attendences.where(event_id: event.id).first
+	end
 end

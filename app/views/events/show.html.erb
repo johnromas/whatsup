@@ -1,0 +1,18 @@
+<div class="row">
+	<div class="col-md-9">
+		<h1><%= @event.name %></h1>
+		<p><%= @event.description %></p>
+		<h3>Attendees</h3>
+		<% @event.users.each do |attendee| %>
+			<p><%= attendee.email %></p>
+		<% end %>
+	</div>
+	<div class="col-md-3">
+		<% if current_user %>
+			<% if attending = current_user.attending(@event) %>
+				<%= link_to "Changed my mind", [@event, attending], class: 'btn btn-danger', method: :delete, remote: true %>
+			<% else %>
+			<%= link_to "I wanna go!", [@event, Attendence.new], class: 'btn btn-success', method: :post, remote: true %>
+			<% end %>
+		<% end %>
+	</div>	

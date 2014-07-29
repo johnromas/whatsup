@@ -1,0 +1,6 @@
+<h1>Here's what your friends are up to!</h1>
+<% @events.each do |event| %>
+	<h4><%= link_to event.name, event %></h4>
+	<p><%= event.start.strftime("%A at %I:%M:%S %p") %></p>
+	<p><%= event.description %></p>
+<% end %>
